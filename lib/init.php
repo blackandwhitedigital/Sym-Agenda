@@ -57,7 +57,7 @@ class Agenda
                     'has_paid_plans'    => false,
                     'menu'              => array(
                         'slug'       => 'agenda',
-                        'first-path' => 'edit.php?post_type=agenda&page=getting_started',
+                        'first-path' => 'edit.php?post_type=agenda',
                         'support'    => false,
                     ),
                 ) );

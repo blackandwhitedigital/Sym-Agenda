@@ -1,0 +1,124 @@
+<?php
+
+if(!class_exists('AgendaPostTypeRegistrations')):
+
+	class AgendaPostTypeRegistrations {
+		public function __construct() {
+			// Add the event post type and taxonomies
+			add_action( 'init', array( $this, 'register' ) );
+		}
+		/**
+		 * Initiate registrations of post type and taxonomies.
+		 *
+		 * @uses Portfolio_Post_Type_Registrations::register_post_type()
+		 */
+		public function register() {
+			$this->register_post_type();
+		}
+
+		/**
+		 * Register the custom post type.
+		 *
+		 * @link http://codex.wordpress.org/Function_Reference/register_post_type
+		 */
+		protected function register_post_type() {
+			global $Agenda;
+
+			$postss = new WP_Query($Agenda);
+			if($postss->have_posts()){
+					$agenda_labels = array(
+						    'name'                => _x( 'Symposium Agenda', AGENDA_SLUG ),
+						    'singular_name'       => _x( 'Events', AGENDA_SLUG ),
+						    'menu_name'           => __( 'Symposium Agenda', AGENDA_SLUG ),
+						    'name_admin_bar'      => __( 'Event', AGENDA_SLUG ),
+						    'parent_item_colon'   => __( 'Parent Event:', AGENDA_SLUG ),
+						    'all_items'           => __( 'All Events', AGENDA_SLUG ),
+						    'add_new_item'        => __( 'Add New Event', AGENDA_SLUG ),
+						    'add_new'             => __( 'Add Event', AGENDA_SLUG ),
+						    'new_item'            => __( 'New Event', AGENDA_SLUG ),
+						    'edit_item'           => __( 'Edit Event', AGENDA_SLUG ),
+						    'update_item'         => __( 'Update Event', AGENDA_SLUG ),
+						    'view_item'           => __( 'View Event', AGENDA_SLUG ),
+						    'search_items'        => __( 'Search Event', AGENDA_SLUG ),
+						    'not_found'           => __( 'Not found', AGENDA_SLUG ),
+						    'not_found_in_trash'  => __( 'Not found in Trash', AGENDA_SLUG ),
+						);
+		               	$agenda_argss = array(
+					        'label'               => __( 'Symposium Agenda', AGENDA_SLUG ),
+						    'description'         => __( 'Event', AGENDA_SLUG ),
+					        'labels'              => $agenda_labels,
+					        'supports'            => array( 'title', 'editor','thumbnail', 'page-attributes' ),
+					        'taxonomies'          => array(),
+					        'hierarchical'        => false,
+					        'public'              => true,
+					        'rewrite'			  => array('slug' => $Agenda->post_type_slug),
+					        'show_ui'             => true,
+					        'show_in_menu'        => true,
+					        'menu_position'       => 20,
+							'menu_icon'			=> $Agenda->assetsUrl.'images/Agenda-Icon_new.png',
+					        'show_in_nav_menus'   => true,
+					        'show_in_admin_bar'   => true,
+					        'has_archive'         => false,
+					        'exclude_from_search' => false,
+					        'publicly_queryable'  => true,
+					        'map_meta_cap' => true,
+					        'capability_type' => 'page',
+					        'capabilities' => array(
+					            'create_posts' => false
+					        )
+					    );
+					    register_post_type( $Agenda->post_type, $agenda_argss);
+					    flush_rewrite_rules();  
+					}else{
+
+						$postss = new WP_Query();
+
+		 			/* For Only One Agenda*/
+					$agenda_labels = array(
+					    'name'                => _x( 'Symposium Agenda', AGENDA_SLUG ),
+					    'singular_name'       => _x( 'Events', AGENDA_SLUG ),
+					    'menu_name'           => __( 'Symposium Agenda', AGENDA_SLUG ),
+					    'name_admin_bar'      => __( 'Event', AGENDA_SLUG ),
+					    'parent_item_colon'   => __( 'Parent Event:', AGENDA_SLUG ),
+					    'all_items'           => __( 'All Events', AGENDA_SLUG ),
+					    'add_new_item'        => __( 'Add New Event', AGENDA_SLUG ),
+					    'add_new'             => __( 'Add Event', AGENDA_SLUG ),
+					    'new_item'            => __( 'New Event', AGENDA_SLUG ),
+					    'edit_item'           => __( 'Edit Event', AGENDA_SLUG ),
+					    'update_item'         => __( 'Update Event', AGENDA_SLUG ),
+					    'view_item'           => __( 'View Event', AGENDA_SLUG ),
+					    'search_items'        => __( 'Search Event', AGENDA_SLUG ),
+					    'not_found'           => __( 'Not found', AGENDA_SLUG ),
+					    'not_found_in_trash'  => __( 'Not found in Trash', AGENDA_SLUG ),
+					);
+					$agenda_argss = array(
+					    'label'               => __( 'Agenda', AGENDA_SLUG ),
+					    'description'         => __( 'Event', AGENDA_SLUG ),
+					    'labels'              => $agenda_labels,
+					    'supports'            => array( 'title', 'editor','thumbnail', 'page-attributes' ),
+						'taxonomies'          => array(),
+						'hierarchical'        => false,
+						'public'              => true,
+						'rewrite'			  => array('slug' => $Agenda->post_type_slug),
+						'show_ui'             => true,
+						'show_in_menu'        => true,
+						'menu_position'       => 20,
+						'menu_icon'			=> $Agenda->assetsUrl.'images/agenda-icon.png',
+						'show_in_admin_bar'   => true,
+						'show_in_nav_menus'   => true,
+						'can_export'          => true,
+						'has_archive'         => false,
+						'exclude_from_search' => false,
+						'publicly_queryable'  => true,
+						'map_meta_cap' => true,
+						'capability_type'     => 'page',
+
+					);
+					register_post_type( $Agenda->post_type, $agenda_argss );
+					flush_rewrite_rules();
+						         		
+		        	}
+		}
+	}
+
+endif;

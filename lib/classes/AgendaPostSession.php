@@ -15,6 +15,7 @@ if (!class_exists('AgendaPostSession')) {
             add_action('wp_ajax_editquery',  array($this,'editquery'));
             add_action('wp_ajax_nopriv_editquery',  array($this,'editquery'));
             add_action('save_post', array($this, 'save_session_meta_data'), 10, 3);
+            add_filter( 'wp_default_editor', create_function('', 'return "html";') );
             
         }
 
@@ -126,8 +127,9 @@ if (!class_exists('AgendaPostSession')) {
                         <label for="session_desc"><?php _e('Brief Description', AGENDA_SLUG); ?>:</label>
                     </div>
                     <?php
-                        $field_value = get_post_meta( $post->ID, 'session_desc', false );
+                        $field_value = get_post_meta( $post->ID, 'session_desc', true );
                         wp_editor( $field_value[0], 'session_desc' );
+
                     ?>
                 </div>
         

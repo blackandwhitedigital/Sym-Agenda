@@ -51,7 +51,7 @@ $settings = get_option($Agenda->options['settings']);
 
 
                     <tr>
-                        <th scope="row"><label for="text-color"><?php _e('Session Title Color,Size & Margin',SPEAKER_SLUG);?></label></th>
+                        <th scope="row"><label for="text-color"><?php _e('Session Title Color,Text Size & Margin',SPEAKER_SLUG);?></label></th>
                         <td class="">
                             <span style="display:block;"><input name="text_color" id="text_color" type="text" value="<?php echo (isset($settings['text_color']) ? ($settings['text_color'] ? $settings['text_color'] : '#4a4a4a') : '#4a4a4a'); ?>" class="tlp-color"></span>
                             <span style="display:block;margin-bottom:5px;"><input name="text_size" id="text_size" type="text" value="<?php echo (isset($settings['text_size']) ? ($settings['text_size'] ? $settings['text_size'] : '15px') : '15px'); ?>"></span>

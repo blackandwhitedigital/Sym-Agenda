@@ -32,7 +32,7 @@ if(!class_exists('AgendaPostTypeRegistrations')):
 						    'menu_name'           => __( 'Symposium Agenda', AGENDA_SLUG ),
 						    'name_admin_bar'      => __( 'Event', AGENDA_SLUG ),
 						    'parent_item_colon'   => __( 'Parent Event:', AGENDA_SLUG ),
-						    'all_items'           => __( 'All Events', AGENDA_SLUG ),
+						    'all_items'           => __( 'Agenda', AGENDA_SLUG ),
 						    'add_new_item'        => __( 'Add New Event', AGENDA_SLUG ),
 						    'add_new'             => __( 'Add Event', AGENDA_SLUG ),
 						    'new_item'            => __( 'New Event', AGENDA_SLUG ),

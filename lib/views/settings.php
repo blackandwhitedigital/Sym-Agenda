@@ -13,7 +13,7 @@ $settings = get_option($Agenda->options['settings']);
 
                 <table class="form-table">
                     <tr>
-                        <th scope="row"><label for="primary-color"><?php _e('Leisure Background & Color', AGENDA_SLUG); ?></label>
+                        <th scope="row"><label for="primary-color"><?php _e('Leisure Session: Background & Text Colors', AGENDA_SLUG); ?></label>
                         </th>
                         <td class="">
                             <input name="primary_color" id="primary_color" type="text"
@@ -28,7 +28,7 @@ $settings = get_option($Agenda->options['settings']);
                     </tr>
 
                     <tr>
-                        <th scope="row"><label for="table-color"><?php _e('Table', AGENDA_SLUG); ?></label>
+                        <th scope="row"><label for="table-color"><?php _e('Table Base Color', AGENDA_SLUG); ?></label>
                         </th>
                         <td class="">
                             <input name="table_color" id="table_color" type="text"
@@ -51,7 +51,7 @@ $settings = get_option($Agenda->options['settings']);
 
 
                     <tr>
-                        <th scope="row"><label for="text-color"><?php _e('Session Title Color,Text Size & Margin',SPEAKER_SLUG);?></label></th>
+                        <th scope="row"><label for="text-color"><?php _e('Session Title: Color, Text Size & Margin',SPEAKER_SLUG);?></label></th>
                         <td class="">
                             <span style="display:block;"><input name="text_color" id="text_color" type="text" value="<?php echo (isset($settings['text_color']) ? ($settings['text_color'] ? $settings['text_color'] : '#4a4a4a') : '#4a4a4a'); ?>" class="tlp-color"></span>
                             <span style="display:block;margin-bottom:5px;"><input name="text_size" id="text_size" type="text" value="<?php echo (isset($settings['text_size']) ? ($settings['text_size'] ? $settings['text_size'] : '15px') : '15px'); ?>"></span>
@@ -64,12 +64,14 @@ $settings = get_option($Agenda->options['settings']);
                         <th scope="row"><label
                                 for="bullet_point"><?php _e('Styling Bullet Points', AGENDA_SLUG); ?></label></th>
                         <td class="">
+
                             <select name="bullet_point" id="bullet_point" type="text"
                                     value="<?php echo(isset($settings['bullet_point']) ? ($settings['bullet_point'] ? $settings['bullet_point'] : 'circle') : 'circle'); ?>">
-                                <option value="none">none</option>
-                                <option value="circle">circle</option>
-                                <option value="square">square</option>
-                                <option value="disc">disc</option>
+
+                                <option value="none" <?php selected( $bullet_point, none ); ?>>none</option>
+                                <option value="circle" <?php selected( $bullet_point, circle ); ?>>circle</option>
+                                <option value="square" <?php selected( $bullet_point, square ); ?>>square</option>
+                                <option value="disc" <?php selected( $bullet_point, disc ); ?>>disc</option>
                             </select>
                         </td>
                     </tr>

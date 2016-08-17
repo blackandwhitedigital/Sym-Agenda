@@ -519,7 +519,7 @@ table.agenda-table .session_speaker .role{font-style: italic; font-size: 13px;}
   margin-top: 15px;
 }
 .agenda-table{
-  margin-top: 60px;
+  margin-top: 0px;
 }
 .wrapper:nth-child(odd){
   float: left;

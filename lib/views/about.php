@@ -65,7 +65,7 @@ $settings = get_option($Agenda->options['settings']);
         <p>The shortcode contains a number of optional elements that allow you to control the appearance of the speakers section. These options are:</p>
         <ul>
           <li><strong>orderby</strong> = The order that sessions in the agenda display by, most people will use 'time' but you can order by 'speaker'</li>
-          <li><strong>layout</strong> = the layout template you want to use.  At the moment you can choose from  “1” and “isotope”<br>
+          <li><strong>layout</strong> = the layout template you want to use.  At the moment you can choose from  “1” and "2"<br>
           </li>
         </ul>
         <p><a href="http://www.blackandwhitedigital.eu/symposium-meeting-agenda-free-template-samples/" target="_blank">You can see examples of each layout here.</a></p>

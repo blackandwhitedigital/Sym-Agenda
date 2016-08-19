@@ -65,7 +65,7 @@ $settings = get_option($Agenda->options['settings']);
                                 for="bullet_point"><?php _e('Styling Bullet Points', AGENDA_SLUG); ?></label></th>
                         <td class="">
 
-                            <select name="bullet_point" id="bullet_point" type="text"
+                            <select name="bullet_point" id="bullet_point" 
                                     value="<?php echo(isset($settings['bullet_point']) ? ($settings['bullet_point'] ? $settings['bullet_point'] : 'circle') : 'circle'); ?>">
 
                                 <option value="none" <?php selected( $bullet_point, none ); ?>>none</option>

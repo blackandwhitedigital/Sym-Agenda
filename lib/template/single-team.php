@@ -98,7 +98,19 @@ get_header( );
 		                    $html .= "{$session_title}<a id='speakertoggle'><span class='session_toggle'>                </span></a><br><p>{$session_desc}</p>";
 
 		                    if (!empty($session_speaker)) {
-		                        $html .= "<p>{$session_speaker}, {$session_speakerrole}, {$session_speakerorg}</p>";
+		                       $html .="<p><span class='speaker-text'>{$session_speaker}</span>";
+		                        if (strlen(trim($session_speakerrole))!=0){  
+		                           $html .= ", <span class='speaker-role'>{$session_speakerrole}</span>";
+		                       }else{ 
+		                       }
+		                       
+		                       if (strlen(trim($session_speakerorg))!=0){
+		                          
+		                            $html .= ", <span class='speaker-org'>{$session_speakerorg}</span></p>";
+		                      
+		                       }else{
+		                           
+		                       }
 		                        $html .= "<a onclick='event_show(" . $postid . ")'' id='speakerinfo'><span class='session_speakerimg'></span></a>";
 
 		                    }

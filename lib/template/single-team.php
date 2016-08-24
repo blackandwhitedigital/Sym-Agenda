@@ -6,33 +6,6 @@ get_header( );
 <div class="container-fluid tlp-single-container">
 	<div class="row">
 		<article id="post-<?php the_ID(); ?>" <?php post_class('tlp-member-article');?> >
-
-			<div class="tlp-col-lg-12 tlp-col-md-12 tlp-col-sm-12 tlp-col-xs-12 tlp-member-feature-img">
-				<div class="event-name">
-					<h3 class="event-name-title">
-						<?php 
-						echo get_the_title();
-						?>
-					</h3>
-					
-				</div>
-					<?php
-					if(has_post_thumbnail()){
-						echo get_the_post_thumbnail( get_the_ID() );
-					}else{
-									$imgSrc = $Agenda->assetsUrl.'images/default.jpg';
-									echo "<img src=".$imgSrc.">";
-					      		}
-					?>
-
-					<p class="event-mdesc">
-						<?php 
-						$short_bio = get_post_meta( get_the_ID(), 'short_bio', true );
-						echo $short_bio;
-						?>
-					</p>
-			</div>
-
 			<div class="tlp-col-lg-12 tlp-col-md-12 tlp-col-sm-12 tlp-col-xs-12">
 				<div class="tlp-member-detail"><?php echo apply_filters('the_content',get_the_content()); ?></div>
 
@@ -98,7 +71,19 @@ get_header( );
 		                    $html .= "{$session_title}<a id='speakertoggle'><span class='session_toggle'>                </span></a><br><p>{$session_desc}</p>";
 
 		                    if (!empty($session_speaker)) {
-		                        $html .= "<p>{$session_speaker}, {$session_speakerrole}, {$session_speakerorg}</p>";
+		                       $html .="<p><span class='speaker-text'>{$session_speaker}</span>";
+		                        if (strlen(trim($session_speakerrole))!=0){  
+		                           $html .= ", <span class='speaker-role'>{$session_speakerrole}</span>";
+		                       }else{ 
+		                       }
+		                       
+		                       if (strlen(trim($session_speakerorg))!=0){
+		                          
+		                            $html .= ", <span class='speaker-org'>{$session_speakerorg}</span></p>";
+		                      
+		                       }else{
+		                           
+		                       }
 		                        $html .= "<a onclick='event_show(" . $postid . ")'' id='speakerinfo'><span class='session_speakerimg'></span></a>";
 
 		                    }

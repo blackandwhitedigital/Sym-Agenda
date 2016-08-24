@@ -34,7 +34,7 @@ if (!class_exists('AgendashortCode')):
             if (!in_array($atts['col'], $col_A)) {
                 $atts['col'] = 1;
             }
-            if (!in_array($atts['layout'], array(1, 'isotope'))) {
+            if (!in_array($atts['layout'], array(1, 2))) {
                 $atts['layout'] = 1;
             }
 
@@ -59,10 +59,10 @@ if (!class_exists('AgendashortCode')):
 
             if ($agendaQuery->have_posts()) {
                 $html .= '<div class="container-fluid agenda">';
-                if ($atts['layout'] == 'isotope') {
+                if ($atts['layout'] == 2) {
                     $html .= '<div class="agenda-isotope">';
                 }
-                if ($atts['layout'] != 'isotope') {
+                if ($atts['layout'] != 2) {
                     $html .= '<div class="row layout' . $atts['layout'] . '">';
                 }
                 while ($agendaQuery->have_posts()) : $agendaQuery->the_post();
@@ -120,7 +120,7 @@ if (!class_exists('AgendashortCode')):
 
                     //$sLink = unserialize(get_post_meta( get_the_ID(), 'social' , true));
 
-                    if ($atts['layout'] != 'isotope') {
+                    if ($atts['layout'] != 2) {
                         $html .= "<div class='tlp-col-lg-{$grid} tlp-col-md-{$grid} tlp-col-sm-12 tlp-col-xs-12 tlp-equal-height'>";
                     }
                     switch ($atts['layout']) {
@@ -128,7 +128,7 @@ if (!class_exists('AgendashortCode')):
                             $html .= $this->layoutOne($id, $title, $pLink, $imgSrc, $short_bio, $event_date, $event_d, $event_day, $event_month, $location, $pageposts);
                             break;
 
-                        case 'isotope':
+                        case 2:
                             $html .= $this->layoutIsotope($id, $title, $pLink, $imgSrc, $short_bio, $event_date, $location, $pageposts, $grid);
                             break;
 
@@ -136,18 +136,18 @@ if (!class_exists('AgendashortCode')):
                             # code...
                             break;
                     }
-                    if ($atts['layout'] != 'isotope') {
+                    if ($atts['layout'] != 2) {
                         $html .= '</div>'; //end col
 
                     }
 
                 endwhile;
-                if ($atts['layout'] != 'isotope') {
+                if ($atts['layout'] != 2) {
                     $html .= '</div>'; // End row
                 }
                 wp_reset_postdata();
                 // end row
-                if ($atts['layout'] == 'isotope') {
+                if ($atts['layout'] == 2) {
                     $html .= '</div>'; // end tlp-team-isotope
                 }
                 $html .= '</div>'; // end container
@@ -217,6 +217,10 @@ if (!class_exists('AgendashortCode')):
                 $session_timeto = $value->session_timeto;
                 $session_desc = $value->session_desc;
                 $session_speaker = $value->session_speaker;
+                //$session_speakerrole = ($value->session_speakerrole !== false) ? $value->session_speakerrole : '';
+                //$session_speakerorg = ($value->session_speakerorg !== false) ? $value->session_speakerorg : '';
+
+
                 $session_speakerrole = $value->session_speakerrole;
                 $session_speakerorg = $value->session_speakerorg;
                 $session_orglogo = $value->session_orglogo;
@@ -240,15 +244,29 @@ if (!class_exists('AgendashortCode')):
                     $html .= '<tr class="leisure-row">';
                 }
 
-                $html .= '<th><span></span>' . $session_timefrom .'<br><span></span></th>';
+                $html .= '<th><span></span>' . $session_timefrom .'<br><span> ' . $session_room .'</span></th>';
+
                 if ($leisure==0) {
                     $html .= '<td>';
                     $html .= "<span class='ses-title'>{$session_title}</span><a id='speakertoggle'><span class='session_toggle'></span></a><br><p>{$session_desc}</p>";
 
-                    if (!empty($session_speaker)) {
-                        $html .= "<p><span class='speaker-text'>{$session_speaker}</span>, <span class='speaker-role'>{$session_speakerrole}</span>, <span class='speaker-org'>{$session_speakerorg}</span></p>";
-
+                    if ($session_speaker!="") {
+                        $html .="<p><span class='speaker-text'>{$session_speaker}</span>";
+                        if (strlen(trim($session_speakerrole))!=0){  
+                           $html .= ", <span class='speaker-role'>{$session_speakerrole}</span>";
+                       }else{ 
+                       }
+                       
+                       if (strlen(trim($session_speakerorg))!=0){
+                          
+                            $html .= ", <span class='speaker-org'>{$session_speakerorg}</span></p>";
+                      
+                       }else{
+                           
+                       }
                     }
+
+                    
                     $html .= '</td>';
                 } else {
                     $html .= '<td>'. $session_title . '<br>' . $session_desc . '</td>';
@@ -295,7 +313,6 @@ if (!class_exists('AgendashortCode')):
                 $session_room = $value->session_room;
                 $speaker_id = $value->speaker_id;
                 $leisure = $value->sort_order;
-                
                 $plus = $Agenda->assetsUrl . 'images/plus.png';
                 global $wpdb;
                 $post = $wpdb->prefix . 'posts';
@@ -312,14 +329,26 @@ if (!class_exists('AgendashortCode')):
                     $html .= '<tr class="leisure-isotope">';
                 }
 
-                $html .= '<td class="col20">' . $session_timefrom . '-'.$session_timeto . '</td>';
+                
+                $html .= '<td class="col20">' . $session_timefrom . '-'.$session_timeto . $session_room . '</td>';
                 if ($leisure==0) {
                     $html .= '<td class="col80">';
                     $html .= "<span class='ses-title'>{$session_title}</span><a id='speakertoggle'><span class='session_toggle'></span></a><br><p>{$session_desc}</p>";
 
-                    if (!empty($session_speaker)) {
-                        $html .= "<p><span class='speaker-text'>{$session_speaker}</span>, <span class='speaker-role'>{$session_speakerrole}</span>, <span class='speaker-org'>{$session_speakerorg}</span></p>";
-
+                    if($session_speaker==0){
+                        $html .="<p><span class='speaker-text'>{$session_speaker}</span>";
+                        if (strlen(trim($session_speakerrole))!=0){  
+                           $html .= ", <span class='speaker-role'>{$session_speakerrole}</span>";
+                       }else{ 
+                       }
+                       
+                       if (strlen(trim($session_speakerorg))!=0){
+                          
+                            $html .= ", <span class='speaker-org'>{$session_speakerorg}</span></p>";
+                      
+                       }else{
+                           
+                       }
                     }
                     $html .= '</td>';
                 } else {

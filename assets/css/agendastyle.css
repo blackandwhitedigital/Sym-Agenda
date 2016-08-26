@@ -961,7 +961,9 @@ table.agenda-pro-table.agenisotope {
 #speakerinfo{
   margin-left: 5px;
 }
-
+.agenda-pro-table ul,.agenda-pro-table ol {
+    margin-left: 20px;
+}
 @media (max-width: 680px){
   .agenisotope .col20{
   width: 25%;
@@ -970,3 +972,4 @@ table.agenda-pro-table.agenisotope {
   width: 75%;
 }
 }
+

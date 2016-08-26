@@ -38,8 +38,9 @@ if( !class_exists( 'AgendafrontEnd' ) ) :
             $html .= 'font-size: '.$ts.'!important;';
             $html .= 'margin: '.$ta.'!important';
             $html .= '}';
-            $html .= '.session_desc li,.entry-content ul, .entry-summary ul, .comment-content ul, .entry-content ol, .entry-summary ol, .comment-content ol, .site-content .agenda-pro-table ul{';
+            $html .= '.session_desc li,.entry-content ul, .entry-summary ul, .comment-content ul, .entry-content ol, .entry-summary ol, .comment-content ol, .site-content .agenda-pro-table ul,.speak_desc li, .agenda-pro-table ol{';
             $html .= 'list-style-type: '.$bp.'!important;';
+            $html .= 'margin-left: 30px;';
             $html .= '}';
             
 

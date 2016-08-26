@@ -247,7 +247,7 @@ if (!class_exists('AgendashortCode')):
                 $html .= '<th><span></span>' . $session_timefrom .'<br><span> ' . $session_room .'</span></th>';
 
                 if ($leisure==0) {
-                    $html .= '<td>';
+                    $html .= '<td class="speak_desc">';
                     $html .= "<span class='ses-title'>{$session_title}</span><a id='speakertoggle'><span class='session_toggle'></span></a><br><p>{$session_desc}</p>";
 
                     if ($session_speaker!="") {
@@ -332,7 +332,7 @@ if (!class_exists('AgendashortCode')):
                 
                 $html .= '<td class="col20">' . $session_timefrom . '-'.$session_timeto . $session_room . '</td>';
                 if ($leisure==0) {
-                    $html .= '<td class="col80">';
+                    $html .= '<td class="col80 speak_desc">';
                     $html .= "<span class='ses-title'>{$session_title}</span><a id='speakertoggle'><span class='session_toggle'></span></a><br><p>{$session_desc}</p>";
 
                     if($session_speaker==0){

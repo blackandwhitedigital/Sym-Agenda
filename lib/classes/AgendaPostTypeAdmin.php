@@ -91,7 +91,7 @@ if(!class_exists('AgendaPostTypeAdmin')):
 
 		public function arrange_agenda_columns( $columns ) {
 			$column_thumbnail = array( 'thumbnail' => __( 'Image', AGENDA_SLUG ) );
-			$column_designation = array( 'event_date' => __( 'Event Date', AGENDA_SLUG ) );
+			$column_designation = array( 'event_date' => __( 'Agenda Date', AGENDA_SLUG ) );
 			//$column_email = array( 'email' => __( 'Email', AGENDA_SLUG ) );
 			$column_location = array( 'location' => __( 'Location', AGENDA_SLUG ) );
 			return array_slice( $columns, 0, 2, true ) + $column_thumbnail + $column_designation + $column_location + array_slice( $columns, 1, null, true );

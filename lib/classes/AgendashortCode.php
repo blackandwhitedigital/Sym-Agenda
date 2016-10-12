@@ -60,7 +60,7 @@ if (!class_exists('AgendashortCode')):
             if ($agendaQuery->have_posts()) {
                 $html .= '<div class="container-fluid agenda">';
                 if ($atts['layout'] == 2) {
-                    $html .= '<div class="agenda-isotope">';
+                    $html .= '<div class="agenda-layout2">';
                 }
                 if ($atts['layout'] != 2) {
                     $html .= '<div class="row layout' . $atts['layout'] . '">';
@@ -129,7 +129,7 @@ if (!class_exists('AgendashortCode')):
                             break;
 
                         case 2:
-                            $html .= $this->layoutIsotope($id, $title, $pLink, $imgSrc, $short_bio, $event_date, $location, $pageposts, $grid);
+                            $html .= $this->layoutlayout2($id, $title, $pLink, $imgSrc, $short_bio, $event_date, $location, $pageposts, $grid);
                             break;
 
                         default:
@@ -148,7 +148,7 @@ if (!class_exists('AgendashortCode')):
                 wp_reset_postdata();
                 // end row
                 if ($atts['layout'] == 2) {
-                    $html .= '</div>'; // end tlp-team-isotope
+                    $html .= '</div>'; // end tlp-team-layout2
                 }
                 $html .= '</div>'; // end container
             } else {
@@ -252,14 +252,20 @@ if (!class_exists('AgendashortCode')):
 
                     if ($session_speaker!="") {
                         $html .="<p><span class='speaker-text'>{$session_speaker}</span>";
+                        if (strlen(trim($session_speakerrole))!=0 && strlen(trim($session_speaker))!=0 ){
+                            $html .= ", ";
+                        }
                         if (strlen(trim($session_speakerrole))!=0){  
-                           $html .= ", <span class='speaker-role'>{$session_speakerrole}</span>";
+                           $html .= "<span class='speaker-role'>{$session_speakerrole}</span>";
                        }else{ 
                        }
-                       
+                        if ((!empty($session_speaker) || strlen(trim($session_speakerrole))!=0 )&& strlen(trim($session_speakerorg))!=0 ){
+                            //$html.= ",am";
+                            $html .= ",";
+                        }
                        if (strlen(trim($session_speakerorg))!=0){
                           
-                            $html .= ", <span class='speaker-org'>{$session_speakerorg}</span></p>";
+                            $html .= "<span class='speaker-org'>{$session_speakerorg}</span></p>";
                       
                        }else{
                            
@@ -279,7 +285,7 @@ if (!class_exists('AgendashortCode')):
             return $html;
         }
 
-        function layoutIsotope($id, $title, $pLink, $imgSrc, $short_bio, $event_date, $location, $pageposts, $grid)
+        function layoutlayout2($id, $title, $pLink, $imgSrc, $short_bio, $event_date, $location, $pageposts, $grid)
         {
             global $Agenda;
             global $wpdb;
@@ -294,7 +300,7 @@ if (!class_exists('AgendashortCode')):
 
             $html .= "<div class='tlp-col-lg-12 tlp-col-md-12 tlp-col-sm-12 tlp-col-xs-12 agenda-table'>";
 
-            $html .= '<table class="agenda-pro-table agenisotope">';
+            $html .= '<table class="agenda-pro-table agenlayout2">';
             $html .= '<tbody>';
             $html .= '<tr>';
             $html .= '<td class="iso-th col20"><span><i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -326,7 +332,7 @@ if (!class_exists('AgendashortCode')):
                 if ($leisure==0) {
                     $html .= '<tr>';
                 } else {
-                    $html .= '<tr class="leisure-isotope">';
+                    $html .= '<tr class="leisure-layout2">';
                 }
 
                 
@@ -337,14 +343,21 @@ if (!class_exists('AgendashortCode')):
 
                     if($session_speaker==0){
                         $html .="<p><span class='speaker-text'>{$session_speaker}</span>";
+                        if (strlen(trim($session_speakerrole))!=0 && strlen(trim($session_speaker))!=0 ){
+                            $html .= ", ";
+                        }
+
                         if (strlen(trim($session_speakerrole))!=0){  
-                           $html .= ", <span class='speaker-role'>{$session_speakerrole}</span>";
+                           $html .= "<span class='speaker-role'>{$session_speakerrole}</span>";
                        }else{ 
                        }
-                       
+                       if ((!empty($session_speaker) || strlen(trim($session_speakerrole))!=0 )&& strlen(trim($session_speakerorg))!=0 ){
+                            //$html.= ",am";
+                            $html .= ",";
+                        }
                        if (strlen(trim($session_speakerorg))!=0){
                           
-                            $html .= ", <span class='speaker-org'>{$session_speakerorg}</span></p>";
+                            $html .= "<span class='speaker-org'>{$session_speakerorg}</span></p>";
                       
                        }else{
                            

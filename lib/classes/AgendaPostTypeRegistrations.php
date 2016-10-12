@@ -28,7 +28,7 @@ if(!class_exists('AgendaPostTypeRegistrations')):
 			if($postss->have_posts()){
 					$agenda_labels = array(
 						    'name'                => _x( 'Symposium Agenda', AGENDA_SLUG ),
-						    'singular_name'       => _x( 'Events', AGENDA_SLUG ),
+						    'singular_name'       => _x( 'Agenda', AGENDA_SLUG ),
 						    'menu_name'           => __( 'Symposium Agenda', AGENDA_SLUG ),
 						    'name_admin_bar'      => __( 'Agenda', AGENDA_SLUG ),
 						    'parent_item_colon'   => __( 'Parent Agenda:', AGENDA_SLUG ),
@@ -93,7 +93,7 @@ if(!class_exists('AgendaPostTypeRegistrations')):
 					);
 					$agenda_argss = array(
 					    'label'               => __( 'Agenda', AGENDA_SLUG ),
-					    'description'         => __( 'Event', AGENDA_SLUG ),
+					    'description'         => __( 'Agenda', AGENDA_SLUG ),
 					    'labels'              => $agenda_labels,
 					    'supports'            => array( 'title', 'editor','thumbnail', 'page-attributes' ),
 						'taxonomies'          => array(),

@@ -249,3 +249,4 @@ function visualcomposer_compatibilityagenda() {
    ) );
 }
 
+?>

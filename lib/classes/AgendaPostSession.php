@@ -163,7 +163,7 @@ if (!class_exists('AgendaPostSession')) {
                     </div>
                 </div>
 
-                <div class="tlp-field-holder">
+                <!-- <div class="tlp-field-holder">
                     <div class="tplp-label">
                         <label for="organisation_logo"><?php _e('Organisation logo/Speaker Image', SPEAKER_SLUG); ?>:</label>
                     </div>
@@ -173,7 +173,7 @@ if (!class_exists('AgendaPostSession')) {
 
                         <span class="desc"></span>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="tlp-field-holder">
                     <div class="tplp-label">

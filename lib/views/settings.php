@@ -38,6 +38,17 @@ $settings = get_option($Agenda->options['settings']);
                         </td>
                     </tr>
 
+                    <tr>
+                        <th scope="row"><label for="table-color"><?php _e('Table Heading Color', AGENDA_SLUG); ?></label>
+                        </th>
+                        <td class="">
+                            <input name="table_hcolor" id="table_hcolor" type="text"
+                                   value="<?php echo(isset($settings['table_hcolor']) ? ($settings['table_hcolor'] ? $settings['table_hcolor'] : '#44BBFF') : '#44BBFF'); ?>"
+                                   class="tlp-color">
+
+                        </td>
+                    </tr>
+
 
                     <tr>
                         <th scope="row"><label for="slug"><?php _e('Slug', AGENDA_SLUG); ?></label></th>
@@ -99,7 +110,7 @@ $settings = get_option($Agenda->options['settings']);
         <p style="font-weight: bold"><?php _e('Short Code', AGENDA_SLUG); ?> :</p>
         <code>[agenda orderby="title" layout="1"]</code><br>
         <p><?php _e('orderby = time|speaker', AGENDA_SLUG); ?></p>
-        <p><?php _e('layout = 1,isotope', AGENDA_SLUG); ?></p></br>
+        <p><?php _e('layout = 1,layout2', AGENDA_SLUG); ?></p></br>
         <p class="tlp-help-link"><a class="button-primary" href="http://http://www.blackandwhitedigital.eu/symposium-meeting-agenda-plugin/" target="_blank"><?php _e('Demo', AGENDA_SLUG );?></a></p>
     </div> -->
 

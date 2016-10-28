@@ -865,10 +865,12 @@ padding-left: 10%;
   font-size: 13px;
 }
 .speaker-org{
-  color: #00aedb;
+  color: #4a4a4a;
+  font-weight: bold;
 }
 .speaker-role{
-  font-weight: bold;
+  /*font-weight: bold;*/
+  font-style: italic;
 }
 .agenda-pro-table th, .agenda-pro-table td {
     border: 1px solid #fff;
